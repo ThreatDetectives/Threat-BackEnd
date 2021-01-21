@@ -13,6 +13,7 @@ searchtweets-v2 = "^1.0.4"
 tweepy = "^3.10.0"
 python-decouple = "^3.4"
 Django = "^3.1.5"
+scikit-learn = "^0.24.1"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
