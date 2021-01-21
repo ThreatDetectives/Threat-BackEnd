@@ -1,7 +1,6 @@
 import nltk
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -48,15 +47,15 @@ class NLPModel(object):
     X_test  = vectorizer.transform(tweet_text_test)
     return X_train # what do I return here?
 
-# binary classification returns percentage
+  # binary classification returns percentage
   def classifier(self, classifier):
     classifier.fit(X_train, y_train)
     score = classifier.score(X_test, y_test)
     return score # TODO : find method for turning decimal into percentage
 
 
-# the probability of the data instance belonging to each class
-# returns the probability of the samples for each class in the model
+  # the probability of the data instance belonging to each class
+  # returns the probability of the samples for each class in the model
   def predict_proba(self, X_test):
     score = predict_proba(X_test)
     return score
