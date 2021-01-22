@@ -11,17 +11,20 @@ import string
 import json
 from collections import Counter
 from django.views.decorators.csrf import csrf_exempt
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 class NLPModel(object):
     def __init__(self):
         # open pickled vectorizer
-        vectorizer_path = "./vectorizer_pickle.pkl"
+        vectorizer_path = BASE_DIR / "vectorizer_pickle.pkl"
         with open(vectorizer_path, "rb") as file:
             self.vectorizer = pickle.load(file)
 
         # import and open pickled model
-        classifier_path = "./finalized_model.pkl"
+        classifier_path = BASE_DIR / "finalized_model.pkl"
         with open(classifier_path, "rb") as file:
             self.classifier = pickle.load(file)
 
@@ -58,9 +61,9 @@ class NLPModel(object):
             "Hate Speech : ",
             str(round(hate_speech * 100)) + "%",
             " Offensive Language : ",
-            str(round(offensive_language)) + "%",
+            str(round(offensive_language * 100)) + "%",
             " Neither : ",
-            str(round(neither)) + "%",
+            str(round(neither * 100)) + "%",
         )
 
 
@@ -72,16 +75,21 @@ class NLPModel(object):
 @csrf_exempt
 def data_view(request):
     # get the user name from the request object
-    twitterhandle = request.POST["twitterHandle"]
+    twitterhandle = json.loads(request.body)["twitterHandle"]
+    # return JsonResponse({"result" : twitterhandle})
     get_all_tweets(twitterhandle)
     # get_all_tweets("hexx_king") # hard coded for testing only
     dataset = pd.read_csv("./temp.csv", encoding="ISO-8859-1")
+
     # we have a CSV with all tweets in it
     model = NLPModel()
     dataset["text"] = dataset["text"].apply(lambda x: model.remove_RT_user(x))
+
     dataset["text"] = dataset["text"].apply(lambda x: model.remove_punctuation(x))
     dataset["text"] = dataset["text"].apply(lambda x: model.tokenize(x))
     tweet_list = model.vectorizer_transform_toarray(dataset["text"])
     prediction = model.detector(tweet_list)
     json_prediction = json.dumps(str(list(prediction)))
     return JsonResponse({"Threat Report": json_prediction})
+    print(dataset)
+    return JsonResponse({"result": twitterhandle})
