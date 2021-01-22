@@ -1,6 +1,6 @@
 build:
   docker:
-    web: Dockerfile
+    web: ./simple_server/Dockerfile
 release:
   image: web
 run:
