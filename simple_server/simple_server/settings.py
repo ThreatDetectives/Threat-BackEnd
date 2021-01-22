@@ -135,7 +135,7 @@ STATIC_URL = "/static/"
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "https://threatdetectives-f8j9zpof5.vercel.app/",
-    "https://threatdetectives.vercel.app/",
-    "https://threat-detector-git-troubleshooting.threatdetectives.vercel.app/",
+    "https://threatdetectives-f8j9zpof5.vercel.app",
+    "https://threatdetectives.vercel.app",
+    "https://threat-detector-git-troubleshooting.threatdetectives.vercel.app",
 ]
