@@ -54,6 +54,9 @@ class NLPModel(object):
         neither = frequencies[2] / length
         return ("Hate Speech : ", str(round(hate_speech * 100)) + "%", " Offensive Language : ", str(round(offensive_language)) + "%", " Neither : ", str(round(neither)) + "%")
 
+# from django.views.decorators.csrf import csrf_exempt
+# @csrf_exempt # NOTE Do yall still need this?
+
 # next step is to replace culk with data from a post
 # request.POST['name_of_user']
 def data_view(request):
@@ -71,3 +74,5 @@ def data_view(request):
     prediction = model.detector(tweet_list)
     json_prediction = json.dumps(str(list(prediction)))
     return JsonResponse({"Threat Report": json_prediction})
+
+
