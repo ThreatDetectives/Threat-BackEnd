@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: ./simple_server/Dockerfile
+release:
+  image: web
+run:
+  web: gunicorn simple_server.wsgi
