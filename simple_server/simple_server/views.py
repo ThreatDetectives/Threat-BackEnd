@@ -10,6 +10,7 @@ import pickle
 import string
 import json
 from collections import Counter
+from django.views.decorators.csrf import csrf_exempt
 
 
 class NLPModel(object):
@@ -53,16 +54,25 @@ class NLPModel(object):
         hate_speech = frequencies[0] / length
         offensive_language = frequencies[1] / length
         neither = frequencies[2] / length
-        return ("Hate Speech : ", str(round(hate_speech * 100)) + "%", " Offensive Language : ", str(round(offensive_language)) + "%", " Neither : ", str(round(neither)) + "%")
+        return (
+            "Hate Speech : ",
+            str(round(hate_speech * 100)) + "%",
+            " Offensive Language : ",
+            str(round(offensive_language)) + "%",
+            " Neither : ",
+            str(round(neither)) + "%",
+        )
+
 
 # from django.views.decorators.csrf import csrf_exempt
 # @csrf_exempt # NOTE Do yall still need this?
 
 # next step is to replace culk with data from a post
 # request.POST['name_of_user']
+@csrf_exempt
 def data_view(request):
     # get the user name from the request object
-    twitterhandle = request.POST['twitterHandle']
+    twitterhandle = request.POST["twitterHandle"]
     get_all_tweets(twitterhandle)
     # get_all_tweets("hexx_king") # hard coded for testing only
     dataset = pd.read_csv("./temp.csv", encoding="ISO-8859-1")
@@ -75,5 +85,3 @@ def data_view(request):
     prediction = model.detector(tweet_list)
     json_prediction = json.dumps(str(list(prediction)))
     return JsonResponse({"Threat Report": json_prediction})
-
-
