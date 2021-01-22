@@ -122,6 +122,14 @@ python-versions = ">=3.6"
 Django = ">=2.2"
 
 [[package]]
+name = "django-environ"
+version = "0.4.5"
+description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "flake8"
 version = "3.8.4"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -546,7 +554,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "f29b4ff1e4b0acc7313ca7427ddda7e5a92639e0fd6a9e99962a815ee0d128a8"
+content-hash = "5b3437840e929c341b384aca9f0af6db81792ed02aaee197fc107b3694d8b4b8"
 
 [metadata.files]
 appdirs = [
@@ -591,6 +599,10 @@ django = [
 django-cors-headers = [
     {file = "django-cors-headers-3.6.0.tar.gz", hash = "sha256:5665fc1b1aabf1b678885cf6f8f8bd7da36ef0a978375e767d491b48d3055d8f"},
     {file = "django_cors_headers-3.6.0-py3-none-any.whl", hash = "sha256:ba898dd478cd4be3a38ebc3d8729fa4d044679f8c91b2684edee41129d7e968a"},
+]
+django-environ = [
+    {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
+    {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
 ]
 flake8 = [
     {file = "flake8-3.8.4-py2.py3-none-any.whl", hash = "sha256:749dbbd6bfd0cf1318af27bf97a14e28e5ff548ef8e5b1566ccfb25a11e7c839"},
