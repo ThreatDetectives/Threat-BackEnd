@@ -14,6 +14,7 @@ from collections import Counter
 
 class NLPModel(object):
     def __init__(self):
+        # open pickled vectorizer
         vectorizer_path = "./vectorizer_pickle.pkl"
         with open(vectorizer_path, "rb") as file:
             self.vectorizer = pickle.load(file)
