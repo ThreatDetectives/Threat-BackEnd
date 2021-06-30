@@ -66,10 +66,6 @@ class NLPModel(object):
             str(round(neither * 100)) + "%",
         )
 
-
-# from django.views.decorators.csrf import csrf_exempt
-# @csrf_exempt # NOTE Do yall still need this?
-
 # next step is to replace culk with data from a post
 # request.POST['name_of_user']
 @csrf_exempt
@@ -91,5 +87,5 @@ def data_view(request):
     prediction = model.detector(tweet_list)
     json_prediction = json.dumps(str(list(prediction)))
     return JsonResponse({"Threat Report": json_prediction})
-    print(dataset)
-    return JsonResponse({"result": twitterhandle})
+    # print(dataset)
+    # return JsonResponse({"result": twitterhandle})

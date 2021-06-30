@@ -17,7 +17,7 @@ import environ
 
 env = environ.Env(
     # We are doing a default setting here because even if something happens to the .env, we set this to false to make sure Django dosn't start pusging out to much information on the error pages (you know, the good stuff we have been using to debug out pages until revently)
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 # read .env file
