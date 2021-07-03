@@ -58,6 +58,12 @@ class NLPModel(object):
         offensive_language = frequencies[1] / length
         neither = frequencies[2] / length
         return (
+            "Threatening : ",
+            # TODO will need to update the line below with threatening speech numbers after new data has been applied
+            str(round(hate_speech * 100)) + "%",
+            "Conspiracy Theory : ",
+            # TODO will need to update the line below with conspiracy theory speech numbers after new data has been applied
+            str(round(hate_speech * 100)) + "%",
             "Hate Speech : ",
             str(round(hate_speech * 100)) + "%",
             " Offensive Language : ",
