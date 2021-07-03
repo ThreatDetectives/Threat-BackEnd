@@ -86,6 +86,6 @@ def data_view(request):
     tweet_list = model.vectorizer_transform_toarray(dataset["text"])
     prediction = model.detector(tweet_list)
     json_prediction = json.dumps(str(list(prediction)))
-    return JsonResponse({"Threat Report": json_prediction})
+    return JsonResponse({"ThreatReport": json_prediction})
     # print(dataset)
     # return JsonResponse({"result": twitterhandle})
