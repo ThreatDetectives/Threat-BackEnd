@@ -66,9 +66,9 @@ class NLPModel(object):
             str(round(hate_speech * 100)) + "%",
             "Hate Speech : ",
             str(round(hate_speech * 100)) + "%",
-            " Offensive Language : ",
+            "Offensive Language : ",
             str(round(offensive_language * 100)) + "%",
-            " Neither : ",
+            "Neither : ",
             str(round(neither * 100)) + "%",
         )
 
@@ -91,7 +91,7 @@ def data_view(request):
     dataset["text"] = dataset["text"].apply(lambda x: model.tokenize(x))
     tweet_list = model.vectorizer_transform_toarray(dataset["text"])
     prediction = model.detector(tweet_list)
-    json_prediction = json.dumps(str(list(prediction)))
-    return JsonResponse({"ThreatReport": json_prediction})
+    # json_prediction = json.dumps(str(list(prediction)))
+    return JsonResponse({"ThreatReport": prediction})
     # print(dataset)
     # return JsonResponse({"result": twitterhandle})
