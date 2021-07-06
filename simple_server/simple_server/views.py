@@ -15,7 +15,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+@csrf_exempt
 class NLPModel(object):
     def __init__(self):
         # open pickled vectorizer
