@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 class NLPModel(object):
     def __init__(self):
         # open pickled vectorizer
-        vectorizer_path = BASE_DIR / "vectorizer_pickle.pkl"
+        vectorizer_path = BASE_DIR / "pickles/vectorizer_pickle.pkl"
         with open(vectorizer_path, "rb") as file:
             self.vectorizer = pickle.load(file)
 
         # import and open pickled model
-        classifier_path = BASE_DIR / "finalized_model.pkl"
+        classifier_path = BASE_DIR / "pickles/finalized_model.pkl"
         with open(classifier_path, "rb") as file:
             self.classifier = pickle.load(file)
 
