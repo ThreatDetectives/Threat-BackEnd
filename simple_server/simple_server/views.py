@@ -76,6 +76,7 @@ class NLPModel(object):
 # request.POST['name_of_user']
 @csrf_exempt
 def data_view(request):
+    print("NOISEY")
     # get the user name from the request object
     twitterhandle = json.loads(request.body)["twitterHandle"]
     # return JsonResponse({"result" : twitterhandle})
